@@ -1,0 +1,19 @@
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="https://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Users\Domain\Entity\UserPoints" table="users_user_points">
+        <id name="ulid" type="string" length="26">
+            <generator strategy="NONE"/>
+        </id>
+        <field name="point" type="integer"/>
+        <field name="type" type="string"/>
+        <field name="created" type="datetime"/>
+        <field name="is_booster" type="boolean"/>
+        <many-to-one field="user_id" target-entity="User" inversed-by="points">
+              <join-column name="user_id" referenced-column-name="ulid" />
+        </many-to-one>
+    </entity>
+
+</doctrine-mapping>
